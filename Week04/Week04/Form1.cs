@@ -43,9 +43,6 @@ namespace Week04
 
             object[,] values = new object[Flats.Count, headers.Length];
 
-            xlWS.get_Range(
-             GetCell(2, 1),
-             GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
             int counter = 0;
             foreach (Flat f in Flats)
             {
@@ -68,6 +65,10 @@ namespace Week04
                 counter++;
             }
 
+            xlWS.get_Range(
+             GetCell(2, 1),
+             GetCell(1 + values.GetLength(0), values.GetLength(1))).Value2 = values;
+
             Excel.Range headerRange = xlWS.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
             headerRange.Font.Bold = true;
             headerRange.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
@@ -77,6 +78,18 @@ namespace Week04
             headerRange.Interior.Color = Color.LightBlue;
             headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
 
+            int lastRowID = xlWS.UsedRange.Rows.Count;
+
+            Excel.Range TableRange = xlWS.get_Range(GetCell(1, 1), GetCell(lastRowID,headers.Length));
+            TableRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+
+            Excel.Range FirstRow = xlWS.get_Range(GetCell(2, 1), GetCell(lastRowID, 1));
+            FirstRow.Font.Bold = true;
+            FirstRow.Interior.Color = Color.LightYellow;
+
+            Excel.Range LastRow = xlWS.get_Range(GetCell(2, headers.Length), GetCell(lastRowID, headers.Length));
+            LastRow.Interior.Color = Color.LightGreen;
+            LastRow.NumberFormat = "0.00";
 
         }
 
@@ -88,7 +101,7 @@ namespace Week04
                 xlWB = xlApp.Workbooks.Add(Missing.Value);
                 xlWS = xlWB.ActiveSheet;
 
-                //CreateTable();
+                CreateTable();
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;
