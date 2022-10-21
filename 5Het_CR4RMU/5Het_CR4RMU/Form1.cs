@@ -1,4 +1,5 @@
-﻿using _5Het_CR4RMU.MnbServiceReference;
+﻿using _5Het_CR4RMU.Entities;
+using _5Het_CR4RMU.MnbServiceReference;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,17 @@ namespace _5Het_CR4RMU
 {
     public partial class Form1 : Form
     {
+
+
+        BindingList<RateData> Rates = new BindingList<RateData>();
+        
+
         public Form1()
         {
             InitializeComponent();
             GetExchange();
+
+            dataGridView1.DataSource = Rates;
         }
 
 
@@ -37,9 +45,11 @@ namespace _5Het_CR4RMU
             var result = response.GetExchangeRatesResult;
         }
 
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            data
         }
     }
 }
