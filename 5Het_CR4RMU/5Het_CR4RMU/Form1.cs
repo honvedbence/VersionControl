@@ -19,11 +19,12 @@ namespace _5Het_CR4RMU
 
 
         BindingList<RateData> Rates = new BindingList<RateData>();
-        
+        BindingList<string> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
+            GetExchange();
             RefreshData();
 
         }
@@ -32,6 +33,7 @@ namespace _5Het_CR4RMU
         {
             Rates.Clear();
             dataGridView1.DataSource = Rates;
+            comboBox1.DataSource = Currencies;
             ProcessData(GetExchange());
             Diagram();
         }
