@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace _5Het_CR4RMU
 {
@@ -23,12 +24,12 @@ namespace _5Het_CR4RMU
         {
             InitializeComponent();
             GetExchange();
-
             dataGridView1.DataSource = Rates;
+            ProcessData();
         }
 
 
-        private void GetExchange()
+        private string GetExchange()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
@@ -42,14 +43,39 @@ namespace _5Het_CR4RMU
 
             var response = mnbService.GetExchangeRates(request);
 
-            var result = response.GetExchangeRatesResult;
+            string result = response.GetExchangeRatesResult;
+
+            return result;
+        }
+
+        private void ProcessData()
+        {
+            var xml = new XmlDocument();
+            xml.LoadXml(GetExchange());
+
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+            }
         }
 
 
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            data
+
         }
     }
 }
