@@ -21,7 +21,10 @@ namespace Het6
         public IToyFactory Factory
         {
             get { return _factory; }
-            set { _factory = value; }
+            set
+            {   _factory = value;
+                DisplayNext();
+            }
         }
 
 
@@ -64,6 +67,30 @@ namespace Het6
                 _toys.Remove(oldestToy);
 
             }
+        }
+
+        private Toy _nextToy;
+        private void DisplayNext()
+        {
+            if (_nextToy != null)
+            {
+                Controls.Remove(_nextToy);
+            }
+
+            _nextToy = Factory.CreateNew();
+            _nextToy.Top = label1.Top + label1.Height + 20;
+            _nextToy.Left = label1.Left;
+            Controls.Add(_nextToy);
+        }
+
+        private void carButton_Click(object sender, EventArgs e)
+        {
+            Factory = new CarFactory();
+        }
+
+        private void ballButton_Click(object sender, EventArgs e)
+        {
+            Factory = new BallFactory();
         }
     }
 }
