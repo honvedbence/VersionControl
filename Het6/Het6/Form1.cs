@@ -85,6 +85,8 @@ namespace Het6
             };
         }
 
+
+
         private void DisplayNext()
         {
             if (_nextToy != null)
@@ -114,6 +116,41 @@ namespace Het6
                 return;
             }
             button.BackColor = colorPicker.Color;
+        }
+
+        private void buttonBoxcolor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = buttonColor.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            button.BackColor = colorPicker.Color;
+        }
+
+        private void buttonRibboncolor_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = buttonColor.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            button.BackColor = colorPicker.Color;
+        }
+
+        private void presentButton_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                box = buttonBoxcolor.BackColor,
+                ribbon = buttonRibboncolor.BackColor
+            };
         }
     }
 }

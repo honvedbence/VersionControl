@@ -37,11 +37,17 @@ namespace Het6
             this.createTimer = new System.Windows.Forms.Timer(this.components);
             this.conveyorTimer = new System.Windows.Forms.Timer(this.components);
             this.buttonColor = new System.Windows.Forms.Button();
+            this.presentButton = new System.Windows.Forms.Button();
+            this.buttonBoxcolor = new System.Windows.Forms.Button();
+            this.buttonRibboncolor = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.buttonRibboncolor);
+            this.mainPanel.Controls.Add(this.buttonBoxcolor);
+            this.mainPanel.Controls.Add(this.presentButton);
             this.mainPanel.Controls.Add(this.buttonColor);
             this.mainPanel.Controls.Add(this.ballButton);
             this.mainPanel.Controls.Add(this.carButton);
@@ -78,7 +84,7 @@ namespace Het6
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(272, 28);
+            this.label1.Location = new System.Drawing.Point(382, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 17);
@@ -107,6 +113,37 @@ namespace Het6
             this.buttonColor.UseVisualStyleBackColor = false;
             this.buttonColor.Click += new System.EventHandler(this.buttonColor_Click);
             // 
+            // presentButton
+            // 
+            this.presentButton.Location = new System.Drawing.Point(258, 27);
+            this.presentButton.Margin = new System.Windows.Forms.Padding(4);
+            this.presentButton.Name = "presentButton";
+            this.presentButton.Size = new System.Drawing.Size(100, 50);
+            this.presentButton.TabIndex = 4;
+            this.presentButton.Text = "PRESENT";
+            this.presentButton.UseVisualStyleBackColor = true;
+            this.presentButton.Click += new System.EventHandler(this.presentButton_Click);
+            // 
+            // buttonBoxcolor
+            // 
+            this.buttonBoxcolor.BackColor = System.Drawing.Color.Yellow;
+            this.buttonBoxcolor.Location = new System.Drawing.Point(258, 86);
+            this.buttonBoxcolor.Name = "buttonBoxcolor";
+            this.buttonBoxcolor.Size = new System.Drawing.Size(100, 26);
+            this.buttonBoxcolor.TabIndex = 5;
+            this.buttonBoxcolor.UseVisualStyleBackColor = false;
+            this.buttonBoxcolor.Click += new System.EventHandler(this.buttonBoxcolor_Click);
+            // 
+            // buttonRibboncolor
+            // 
+            this.buttonRibboncolor.BackColor = System.Drawing.Color.Green;
+            this.buttonRibboncolor.Location = new System.Drawing.Point(258, 118);
+            this.buttonRibboncolor.Name = "buttonRibboncolor";
+            this.buttonRibboncolor.Size = new System.Drawing.Size(100, 26);
+            this.buttonRibboncolor.TabIndex = 6;
+            this.buttonRibboncolor.UseVisualStyleBackColor = false;
+            this.buttonRibboncolor.Click += new System.EventHandler(this.buttonRibboncolor_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -132,6 +169,9 @@ namespace Het6
         private System.Windows.Forms.Button carButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonColor;
+        private System.Windows.Forms.Button presentButton;
+        private System.Windows.Forms.Button buttonBoxcolor;
+        private System.Windows.Forms.Button buttonRibboncolor;
     }
 }
 
