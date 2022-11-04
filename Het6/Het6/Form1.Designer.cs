@@ -64,7 +64,7 @@ namespace Het6
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 25);
+            this.label1.Location = new System.Drawing.Point(204, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 0;
@@ -72,9 +72,9 @@ namespace Het6
             // 
             // carButton
             // 
-            this.carButton.Location = new System.Drawing.Point(90, 22);
+            this.carButton.Location = new System.Drawing.Point(14, 22);
             this.carButton.Name = "carButton";
-            this.carButton.Size = new System.Drawing.Size(75, 23);
+            this.carButton.Size = new System.Drawing.Size(75, 42);
             this.carButton.TabIndex = 1;
             this.carButton.Text = "CAR";
             this.carButton.UseVisualStyleBackColor = true;
@@ -82,9 +82,9 @@ namespace Het6
             // 
             // ballButton
             // 
-            this.ballButton.Location = new System.Drawing.Point(171, 23);
+            this.ballButton.Location = new System.Drawing.Point(104, 23);
             this.ballButton.Name = "ballButton";
-            this.ballButton.Size = new System.Drawing.Size(75, 23);
+            this.ballButton.Size = new System.Drawing.Size(75, 41);
             this.ballButton.TabIndex = 2;
             this.ballButton.Text = "BALL";
             this.ballButton.UseVisualStyleBackColor = true;

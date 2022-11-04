@@ -45,6 +45,7 @@ namespace Het6
             var toy = Factory.CreateNew();
             _toys.Add(toy);
             toy.Left = toy.Width * -1;
+            toy.Top = 250;
             mainPanel.Controls.Add(toy);
         }
 
