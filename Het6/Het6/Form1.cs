@@ -79,7 +79,10 @@ namespace Het6
 
         private void ballButton_Click(object sender, EventArgs e)
         {
-            Factory = new BallFactory();
+            Factory = new BallFactory
+            {
+                BallColor = buttonColor.BackColor
+            };
         }
 
         private void DisplayNext()
