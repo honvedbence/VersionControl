@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Het7.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace Het7
 
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
+        List<PortfolioItem> Portfolio = new List<PortfolioItem>();
 
         public Form1()
         {
@@ -22,6 +24,14 @@ namespace Het7
 
             Ticks = context.Tick.ToList();
             dataGridView1.DataSource = Ticks;
+            CreatePortfolio();
+        }
+
+        private void CreatePortfolio()
+        {
+            Portfolio.Add(new PortfolioItem() { Index = "OTP", Volume = 10 });
+            Portfolio.Add(new PortfolioItem() { Index = "ZWACK", Volume = 10 });
+            Portfolio.Add(new PortfolioItem() { Index = "ELMU", Volume = 10 });
         }
 
         private void Form1_Load(object sender, EventArgs e)
