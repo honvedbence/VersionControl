@@ -28,5 +28,17 @@ namespace UnitTestExample.Test
             Assert.AreEqual(expectedResult, actualResult);
 
         }
+
+        [   Test,
+            TestCase("abcdABCD",false),
+            TestCase("ABCD1234", false),
+            TestCase("abcd1234", false),
+            TestCase("Ab1234", false),
+            TestCase("Abcd1234", true)]
+
+        public void TestValidatePassword()
+        {
+
+        }
     }
 }
