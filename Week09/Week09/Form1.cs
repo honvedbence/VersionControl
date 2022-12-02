@@ -29,23 +29,6 @@ namespace Week09
             Population = GetPopulation(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirthProbabilities(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Temp\halál.csv");
-
-            for (int year = 2005; year <= 2024; year++)
-            {
-                for (int i = 0; i < Population.Count; i++)
-                {
-                    int nbrOfMales = (from x in Population
-                                      where x.Gender == Gender.Male && x.IsAlive
-                                      select x).Count();
-                    int nbrOfFemales = (from x in Population
-                                        where x.Gender == Gender.Female && x.IsAlive
-                                        select x).Count();
-                    
-                    Console.WriteLine(string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
-
-                    //SimStep(year,);
-                }
-            }
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -146,7 +129,50 @@ namespace Week09
             }
         }
 
+        private void Simulation()
+        {
+            for (int year = 2005; year <= 2024; year++)
+            {
+                for (int i = 0; i < Population.Count; i++)
+                {
+                    int nbrOfMales = (from x in Population
+                                      where x.Gender == Gender.Male && x.IsAlive
+                                      select x).Count();
+                    int nbrOfFemales = (from x in Population
+                                        where x.Gender == Gender.Female && x.IsAlive
+                                        select x).Count();
+
+                    Console.WriteLine(string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+
+                    SimStep(year, Population[i]);
+
+                    richTextBox1.Text = string.Format("Szimulációs év: {0}\n\tFiúk: {1}\n\tLányok: {2}",year,nbrOfMales,nbrOfFemales);
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            Simulation();
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string path = ofd.FileName;
+                textBox1.Text = path;
+            }
+        }
+
+        private void DisplayResults()
         {
 
         }
