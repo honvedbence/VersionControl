@@ -10,6 +10,6 @@ namespace Week09.Entities
     {
         public Gender Gender { get; set; }
         public int Age { get; set; }
-        public double P { get; set; }
+        public double ProbOfDeath { get; set; }
     }
 }
