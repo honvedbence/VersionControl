@@ -31,9 +31,6 @@ namespace Het10
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
 
-            gc.AddPlayer();
-            gc.Start(true);
-
             gc.GameOver += Gc_GameOver;
 
             for (int i = 0; i < populationSize; i++)
@@ -42,7 +39,6 @@ namespace Het10
             }
 
             gc.Start();
-
         }
 
         private void Gc_GameOver(object sender)
@@ -88,6 +84,15 @@ namespace Het10
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            gc.ResetCurrentLevel();
+            gc.AddPlayer(winnerBrain.Clone());
+            gc.AddPlayer();
+            ga.Focus();
+            gc.Start(true);
         }
     }
 }
