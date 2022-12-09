@@ -23,6 +23,9 @@ namespace Het10
 
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
+
+            gc.AddPlayer();
+            gc.Start(true);
         }
 
         private void Form1_Load(object sender, EventArgs e)
